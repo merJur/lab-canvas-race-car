@@ -1,4 +1,4 @@
-const LEFT = 37;
-const RIGTH = 39;
+const LEFT = 65;
+const RIGHT = 68;
 const CANVAS_WIDTH = 500;
 const CANVAS_HEIGHT = 700;

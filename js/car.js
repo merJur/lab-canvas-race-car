@@ -11,27 +11,27 @@ class Car {
 
     this.actions = {
       left: false,
-      rigth: false,
-    }
+      right: false,
+    };
 
-    this.setListener()
-    }
+    this.setListener();
+  }
   move() {
     this.applyActions();
-    this.x +=this.vx
-    }
-
+    this.vx += this.ax;
+    this.x += this.vx;
+  }
   setListener() {
     document.onkeydown = (e) => this.switchAction(e.code, true);
     document.onkeyup = (e) => this.switchAction(e.code, false);
   }
   applyActions() {
-    if (this.actions.rigth) {
-      this.vx += 2;
+    if (this.actions.right) {
+      this.ax += 5;
     } else if (this.actions.left) {
-      this.vx += -2;
+      this.ax += -5;
     } else {
-      this.vx = 0;
+      this.ax = 0;
     }
   }
   switchAction(key, apply) {
@@ -39,8 +39,8 @@ class Car {
       case LEFT:
         this.actions.left = apply;
         break;
-      case RIGTH:
-        this.actions.rigth = apply;
+      case RIGHT:
+        this.actions.right = apply;
         break;
     }
   }

@@ -1,8 +1,8 @@
 class Game {
   constructor(ctx) {
     this.ctx = ctx;
-    this.background = new Background(this.ctx);
     this.intervalId = null;
+    this.background = new Background(this.ctx);
     this.car = new Car(this.ctx);
     this.obstacle = [];
     this.tickObstacle = 0;
@@ -16,16 +16,15 @@ class Game {
       this.checkCollisions();
       this.move();
       this.tickObstacle++;
-
+      this.score();
       if (this.tickObstacle % 80 === 0) {
         this.addObstacle();
       }
-      this.score();
-    }, 1000 / 60);
+      }, 1000 / 60);
   }
 
   stop(){
-    if(gameOver){
+    if(gameOver()){
       this.intervalId === null
     }
 
@@ -76,7 +75,7 @@ class Game {
     }
   }
 
-  score () {
+  score() {
     this.ctx.font = '18px serif';
     this.ctx.fillStyle = 'white';
     this.ctx.textAlign = "center";
