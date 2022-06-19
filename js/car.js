@@ -15,36 +15,25 @@ class Car {
     }
 
     this.setListener()
-
-    this.arrowkeys = document.querySelector('.arrow-img')
-  }
+    }
   move() {
     this.applyActions();
-    if(this.x <= 0){
-        this.x += 20}
-
-    if (this.x >= CANVAS_WIDTH-this.w){
-        this.x -= 20}
-
-    this.vx += this.ax;
-    this.x += this.vx;
-  }
+    this.x +=this.vx
+    }
 
   setListener() {
-    document.onkeydown = (e) => this.switchAction(e.key, true);
-    document.onkeyup = (e) => this.switchAction(e.key, false);
+    document.onkeydown = (e) => this.switchAction(e.code, true);
+    document.onkeyup = (e) => this.switchAction(e.code, false);
   }
-
   applyActions() {
     if (this.actions.rigth) {
-      this.ax = 2;
+      this.vx += 2;
     } else if (this.actions.left) {
-      this.ax = 2;
+      this.vx += -2;
     } else {
-      this.ax = 0;
+      this.vx = 0;
     }
   }
-
   switchAction(key, apply) {
     switch (key) {
       case LEFT:

@@ -23,6 +23,13 @@ class Game {
       this.score();
     }, 1000 / 60);
   }
+
+  stop(){
+    if(gameOver){
+      this.intervalId === null
+    }
+
+  }
   clear() {
     this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
   }
@@ -56,10 +63,14 @@ class Game {
   }
 
   checkCollisions() {
-    let carVsObs = this.obstacle.find((obs) => obs.collide(this.car));
+    let carVsObs = this.obstacle.find((obs) => {
+      return obs.collide(this.car);
+    });
 
     if (carVsObs || this.car.x + this.car.w >= CANVAS_WIDTH) {
-      this.gameOver();
+      this.gameOver()
+      this.stop();
+      
     } else {
       this.points ++;
     }
@@ -67,7 +78,7 @@ class Game {
 
   score () {
     this.ctx.font = '18px serif';
-    this.ctx.fillStyle = 'gray';
+    this.ctx.fillStyle = 'white';
     this.ctx.textAlign = "center";
     this.ctx.fillText(`Score:${this.points}`, 300, 100)
 }

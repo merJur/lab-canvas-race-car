@@ -13,7 +13,7 @@ class Obstacle {
   draw() {
     this.ctx.beginPath();
     this.ctx.fillStyle = this.color;
-    this.ctx.fillRect(this.randomX, this.y, this.randomW, this.h);
+    this.ctx.fillRect(this.x, this.y, this.w, this.h);
     this.ctx.closePath();
   }
 
@@ -21,9 +21,9 @@ class Obstacle {
     this.y += this.vy;
   }
 
-  collide(player) {
-    const collideX = player.x + player.w > this.randomX && player.x < this.randomX + this.randomW;
-    const collideY = player.y < this.y + this.h && player.y + player.h > this.y;
+  collide(car) {
+    const collideX = car.x + car.w > this.x && car.x < this.x + this.w;
+    const collideY = car.y < this.y + this.h && car.y + car.h > this.y;
 
     return collideX && collideY
 }
