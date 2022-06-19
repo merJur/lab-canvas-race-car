@@ -22,8 +22,8 @@ class Car {
     this.x += this.vx;
   }
   setListener() {
-    document.onkeydown = (e) => this.switchAction(e.code, true);
-    document.onkeyup = (e) => this.switchAction(e.code, false);
+    document.onkeydown = (e) => this.switchAction(e.keycode, true);
+    document.onkeyup = (e) => this.switchAction(e.keycode, false);
   }
   applyActions() {
     if (this.actions.right) {
