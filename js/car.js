@@ -18,20 +18,19 @@ class Car {
   }
   move() {
     this.applyActions();
-    this.vx += this.ax;
     this.x += this.vx;
   }
   setListener() {
-    document.onkeydown = (e) => this.switchAction(e.keycode, true);
-    document.onkeyup = (e) => this.switchAction(e.keycode, false);
+    document.onkeydown = (e) => this.switchAction(e.keyCode, true);
+    document.onkeyup = (e) => this.switchAction(e.keyCode, false);
   }
   applyActions() {
     if (this.actions.right) {
-      this.ax += 5;
+      this.vx += 1;
     } else if (this.actions.left) {
-      this.ax += -5;
+      this.vx += -1;
     } else {
-      this.ax = 0;
+      this.vx = 0;
     }
   }
   switchAction(key, apply) {

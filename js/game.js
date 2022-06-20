@@ -10,7 +10,7 @@ class Game {
   }
 
   start() {
-    this.intervalilId = setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.clear();
       this.draw();
       this.checkCollisions();
@@ -24,7 +24,7 @@ class Game {
   }
 
   stop(){
-    if(gameOver()){
+    if(this.gameOver()){
       this.intervalId === null
     }
 
